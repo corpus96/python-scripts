@@ -1,3 +1,5 @@
+#List of the colors
+
 ntc_names = [
     ["000000", "Black"],
 ["000080", "Navy Blue"],

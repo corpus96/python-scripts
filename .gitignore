@@ -1,2 +1,4 @@
 video_list.txt
-__pycache__
+__pycache__/
+hex_color_names/
+pbot_scripts/

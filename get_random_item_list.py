@@ -1,6 +1,6 @@
 import random
 
-filename = "lists.txt"
+filename = "video_list.txt"
 
 with open(filename, "r") as file:
     items = [line.strip() for line in file.readlines()]

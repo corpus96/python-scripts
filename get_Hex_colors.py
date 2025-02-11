@@ -111,4 +111,4 @@ else:
 end_time = time.time()
 diff_time = end_time - start_time
 
-print(f"executed in {diff_time} seconds or {d*1000} millseconds")
+print(f"executed in {diff_time} seconds or {diff_time*1000} millseconds")

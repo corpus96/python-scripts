@@ -3,7 +3,7 @@ from collections import Counter
 from PIL import Image
 import ntc
 import color_list
-import time
+import datetime
 
 def euclidean_distance(c1, c2):
     return math.sqrt((c1[0] - c2[0]) ** 2 + (c1[1] - c2[1]) ** 2 + (c1[2] - c2[2]) ** 2)
@@ -86,7 +86,7 @@ def get_top_colors(image_path, num_of_colors=5):
 
 #Begin Script
 
-start_time = time.time()
+start_time = datetime.datetime.now()
 
 ntc = ntc.NTC(color_list.ntc_names)
 
@@ -108,7 +108,7 @@ if top_colors:
 else:
     print("No colors could be extracted. Please check the image path or file format")
 
-end_time = time.time()
+end_time = datetime.datetime.now()
 diff_time = end_time - start_time
 
-print(f"executed in {diff_time} seconds or {diff_time*1000} millseconds")
+print(f"executed in {diff_time.total_seconds()} seconds or {diff_time.total_seconds()*1000} millseconds")

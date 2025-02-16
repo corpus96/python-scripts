@@ -4,6 +4,7 @@ from PIL import Image
 import ntc
 import color_list
 import datetime
+import os
 
 def euclidean_distance(c1, c2):
     return math.sqrt((c1[0] - c2[0]) ** 2 + (c1[1] - c2[1]) ** 2 + (c1[2] - c2[2]) ** 2)
@@ -17,6 +18,31 @@ def is_near_white(rgb, threshold):
     r, g, b = rgb
     return r>= white_color - threshold and g >= white_color - threshold and b >= white_color - threshold 
 
+def get_frame_number(image_path):
+    #Extract the frame number from the path
+    filename = os.path.basename(image_path)
+    return filename.split('.')[0].replace('frame', '').replace('_used', '')
+
+def open_image(image_path):
+    print("Inside open_image fucntion")
+
+    frame_number = get_frame_number(image_path)
+    directory = os.path.dirname(image_path)
+
+    primary_image_path = os.path.join(directory, f'frame{frame_number}.jpg')
+    backup_image_path = os.path.join(directory, f'frame{frame_number}_used.jpg')
+
+    #Check if file is available, if not, check with alternate 'used' filename
+    if os.path.exists(primary_image_path):
+        print("Opening primary image path")
+        img = Image.open(primary_image_path)
+    elif os.path.exists(backup_image_path):
+        print("Opening backup image path")
+        img = Image.open(backup_image_path)
+    else:
+        raise FileNotFoundError(f"Neither {primary_image_path} nor {backup_image_path} exists.")
+    
+    return img
 
 def get_top_colors(image_path, num_of_colors=5):
 
@@ -24,8 +50,8 @@ def get_top_colors(image_path, num_of_colors=5):
     white_threshold = 50
 
     try:
-        #Open the file
-        img = Image.open(image_path)
+
+        img = open_image(image_path)
 
         #Ensure consistent color representation by converting to RGB
         img = img.convert("RGB")

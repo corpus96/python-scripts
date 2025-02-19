@@ -24,7 +24,7 @@ def get_frame_number(image_path):
     return filename.split('.')[0].replace('frame', '').replace('_used', '')
 
 def open_image(image_path):
-    print("Inside open_image fucntion")
+    print("Inside open_image function")
 
     frame_number = get_frame_number(image_path)
     directory = os.path.dirname(image_path)

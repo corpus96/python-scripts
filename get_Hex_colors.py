@@ -39,6 +39,9 @@ def open_image(image_path):
     elif os.path.exists(backup_image_path):
         print("Opening backup image path")
         img = Image.open(backup_image_path)
+    elif image_path.lower().endswith('.jpg'):
+        print("Image path ends with .jpg, returning the path")
+        img = Image.open(image_path)
     else:
         raise FileNotFoundError(f"Neither {primary_image_path} nor {backup_image_path} exists.")
     

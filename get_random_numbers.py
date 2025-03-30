@@ -13,8 +13,8 @@ print(f"Generated ramdon numbers: {random_results}")
 directory = input("Enter the directory path: ").strip()
 
 for number in random_results:
-    base_file_name = f"frame{number}.jpg"
-    used_file_name = f"frame{number}_used.jpg"
+    base_file_name = f"frame_{number}.jpg"
+    used_file_name = f"frame_{number}_used.jpg"
 
     base_file_path = os.path.join(directory, base_file_name)
     used_file_path = os.path.join(directory, used_file_name)
@@ -46,6 +46,6 @@ for number in random_results:
         time.sleep(sleep_time_seconds)
     else:
         #Default error case
-        print(f"No file found for frame{number} in the directory")
+        print(f"No file found for frame {number} in the directory")
 
 print("Exiting")

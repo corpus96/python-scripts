@@ -2,3 +2,6 @@ video_list.txt
 __pycache__/
 hex_color_names/
 pbot_scripts/
+rename_files.py
+move_all_mp4_files.py
+empty_directories.py
